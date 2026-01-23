@@ -8,5 +8,5 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "bash .devcontainer/setup-desktop.sh"
+  "postCreateCommand": "#bash .devcontainer/setup-desktop.sh"
 }
