@@ -24,4 +24,4 @@ x11vnc -display :1 \
   -rfbport 5900 &
 
 # start web VNC
-websockify --web=/usr/share/novnc 6080 localhost:5900
+#websockify --web=/usr/share/novnc 6080 localhost:5900
