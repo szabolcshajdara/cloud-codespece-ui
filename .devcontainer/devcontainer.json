@@ -1,12 +1,15 @@
 {
-  "name": "Desktop Codespace",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "name": "Ubuntu Desktop Dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "forwardPorts": [6080],
   "portsAttributes": {
     "6080": {
-      "label": "Desktop UI",
+      "label": "Ubuntu Desktop",
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "#bash .devcontainer/setup-desktop.sh"
+  "remoteUser": "vscode",
+  "postStartCommand": "/usr/local/bin/start-desktop.sh"
 }
