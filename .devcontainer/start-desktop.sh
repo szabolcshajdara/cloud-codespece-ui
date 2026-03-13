@@ -2,8 +2,7 @@
 
 export DISPLAY=:1
 
-mkdir -p /tmp/.X11-unix
-chmod 1777 /tmp/.X11-unix
+[ -d /tmp/.X11-unix ] || mkdir -p /tmp/.X11-unix
 
 mkdir -p /home/vscode/.vnc
 
