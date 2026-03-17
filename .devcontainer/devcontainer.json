@@ -3,6 +3,16 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-azurecli",
+        "amazonwebservices.aws-toolkit-vscode",
+        "googlecloudtools.cloudcode",
+        "hashicorp.terraform"
+      ]
+    }
+  },
   "forwardPorts": [6080],
   "portsAttributes": {
     "6080": {
