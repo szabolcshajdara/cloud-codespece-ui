@@ -11,5 +11,5 @@
     }
   },
   "remoteUser": "vscode",
-  "postStartCommand": "nohup /usr/local/bin/start-desktop.sh > /home/vscode/startup.log 2>&1 &"
+  "postStartCommand": "/usr/local/bin/start-desktop.sh"
 }
