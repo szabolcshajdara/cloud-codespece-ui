@@ -40,5 +40,5 @@ fi
 
 # start noVNC
 if ! pgrep websockify >/dev/null; then
-    websockify --web=/usr/share/novnc 6080 localhost:5900
+    nohup websockify --web=/usr/share/novnc 6080 localhost:5900 > /home/vscode/websockify.log 2>&1 & 
 fi
