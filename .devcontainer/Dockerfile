@@ -36,7 +36,16 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 COPY start-desktop.sh /usr/local/bin/start-desktop.sh
 RUN chmod +x /usr/local/bin/start-desktop.sh
 
-# Prepare to VNC
-RUN mkdir -p /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix
+# ----------
+# Install supervisor
+RUN apt-get update && apt-get install -y supervisor
+
+# Create supervisor config
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/desktop.conf
+
+# Start supervisor instead of your script directly
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
+# ----------
 
 EXPOSE 6080
