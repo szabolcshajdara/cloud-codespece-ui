@@ -10,8 +10,10 @@ echo "----------Before creating password"
 # set password
 if [ ! -f /home/vscode/.vnc/passwd ]; then
     echo "----------Creating password"
+    echo "${VNC_PASSWORD:-WNdM0BFgbx72Vp7Rfpj9} | vncpasswd -f > /home/vscode/.vnc/passwd"
     echo ${VNC_PASSWORD:-WNdM0BFgbx72Vp7Rfpj9} | vncpasswd -f > /home/vscode/.vnc/passwd
-    chmod 600 /home/vscode/.vnc/passwd
+    #chmod 600 /home/vscode/.vnc/passwd
+    echo "----------Created password"
 fi
 
 # start virtual display if not running
