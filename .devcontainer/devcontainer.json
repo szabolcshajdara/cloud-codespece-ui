@@ -11,5 +11,5 @@
     }
   },
   "remoteUser": "vscode",
-  "postStartCommand": "sudo service supervisor start"
+  "postStartCommand": "/usr/local/bin/create-vnc-password.sh && sudo service supervisor start"
 }

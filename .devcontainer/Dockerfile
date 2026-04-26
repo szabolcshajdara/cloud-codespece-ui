@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     gnupg \
     lsb-release \
+    supervisor \
     && rm -rf /var/lib/apt/lists/*
 
 # AWS CLI
@@ -36,17 +37,14 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 
 COPY start-desktop.sh /usr/local/bin/start-desktop.sh
 RUN chmod +x /usr/local/bin/start-desktop.sh
-
-# ----------
-# Install supervisor
-RUN apt-get update && apt-get install -y supervisor
+COPY create-vnc-password.sh /usr/local/bin/create-vnc-password.sh
+RUN chmod +x /usr/local/bin/create-vnc-password.sh
 
 # Create supervisor config
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/desktop.conf
 
-# Start supervisor instead of your script directly
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
-# ----------
+# Start supervisor
+#CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
 
 EXPOSE 6080

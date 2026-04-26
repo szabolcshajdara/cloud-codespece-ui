@@ -4,17 +4,13 @@ export DISPLAY=:1
 
 [ -d /tmp/.X11-unix ] || (mkdir -p /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix)
 
-mkdir -p /home/vscode/.vnc
-
-echo "----------Before creating password"
 # set password
-if [ ! -f /home/vscode/.vnc/passwd ]; then
-    echo "----------Creating password"
-    echo "${VNC_PASSWORD:-WNdM0BFgbx72Vp7Rfpj9} | vncpasswd -f > /home/vscode/.vnc/passwd"
-    echo ${VNC_PASSWORD:-WNdM0BFgbx72Vp7Rfpj9} | vncpasswd -f > /home/vscode/.vnc/passwd
-    #chmod 600 /home/vscode/.vnc/passwd
-    echo "----------Created password"
-fi
+# Moved to a dedicated script
+#mkdir -p /home/vscode/.vnc
+#if [ ! -f /home/vscode/.vnc/passwd ]; then
+#    echo ${VNC_PASSWORD:-WNdM0BFgbx72Vp7Rfpj9} | vncpasswd -f > /home/vscode/.vnc/passwd
+#    chmod 600 /home/vscode/.vnc/passwd
+#fi
 
 # start virtual display if not running
 if ! pgrep Xvfb >/dev/null; then
