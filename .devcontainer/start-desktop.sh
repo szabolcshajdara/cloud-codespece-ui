@@ -2,10 +2,11 @@
 
 export DISPLAY=:1
 
-[ -d /tmp/.X11-unix ] || mkdir -p /tmp/.X11-unix
+[ -d /tmp/.X11-unix ] || (mkdir -p /tmp/.X11-unix && chmod 1777 /tmp/.X11-unix)
 
 mkdir -p /home/vscode/.vnc
 
+echo "----------Before creating password"
 # set password
 if [ ! -f /home/vscode/.vnc/passwd ]; then
     echo "----------Creating password"
@@ -15,7 +16,7 @@ fi
 
 # start virtual display if not running
 if ! pgrep Xvfb >/dev/null; then
-    Xvfb :1 -screen 0 1280x800x24 &
+    Xvfb :1 -screen 0 1920x1080x24 &
     sleep 2
 fi
 
@@ -42,5 +43,6 @@ fi
 
 # start noVNC
 if ! pgrep websockify >/dev/null; then
-    nohup websockify --web=/usr/share/novnc 6080 localhost:5900 > /home/vscode/websockify.log 2>&1
+    #nohup websockify --web=/usr/share/novnc 6080 localhost:5900 > /home/vscode/websockify.log 2>&1
+    websockify --web=/usr/share/novnc 6080 localhost:5900
 fi
