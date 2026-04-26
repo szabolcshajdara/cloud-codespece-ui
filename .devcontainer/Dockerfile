@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     xfce4-goodies \
     xvfb \
     x11vnc \
+    tigervnc-tools \
     novnc \
     websockify \
     dbus-x11 \

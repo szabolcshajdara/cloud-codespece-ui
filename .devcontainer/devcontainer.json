@@ -11,5 +11,5 @@
     }
   },
   "remoteUser": "vscode",
-  "postStartCommand": "sudo service supervisor start && sudo supervisorctl restart desktop"
+  "postStartCommand": "sudo service supervisor start"
 }
